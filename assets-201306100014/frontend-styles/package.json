@@ -1,0 +1,6 @@
+{
+    "name": "styles-frontend",
+    "description": "Dijitive Documentation Website Styles",
+    "version": "dev",
+    "dojoBuild": "package.js"
+}

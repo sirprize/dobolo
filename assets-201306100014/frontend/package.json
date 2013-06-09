@@ -1,0 +1,6 @@
+{
+    "name": "frontend",
+    "description": "Static Dojo Website",
+    "version": "dev",
+    "dojoBuild": "package.js"
+}

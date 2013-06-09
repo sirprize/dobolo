@@ -1,0 +1,643 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dobolo - Dojo Bootstrap Love</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+    <link rel="stylesheet" href="assets-201306100014/frontend-styles/bootstrap-common.css">
+    <link rel="stylesheet" href="assets-201306100014/frontend-styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="assets-201306100014/frontend-styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="assets-201306100014/frontend-styles/dobolo.css">
+    <link rel="stylesheet" href="assets-201306100014/frontend-styles/examples.css">
+    <link rel="stylesheet" href="assets-201306100014/other/google-code-prettify/prettify.css">
+
+        <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    </head>
+
+    <body data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '.bs-docs-sidenav', offsetsSelector: 'section.spy', offsetTop: 70, wait: 100">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://github.com/sirprize/dobolo">Dobolo on Github</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Subhead -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>Dobolo</h1>
+                <p class="lead">Dojo Bootstrap Love</p>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <!-- Docs nav -->
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <script>
+                        var offsetTop = function () {
+                            return document.width <= 980 ? 245 : 195;
+                        }
+                    </script>
+                    
+                    <ul class="nav nav-list bs-docs-sidenav" data-dojo-type="dobolo/Affix" data-dojo-props="offsetTop: offsetTop">
+                        <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+                        <li><a href="#alert"><i class="icon-chevron-right"></i> Alert</a></li>
+                        <li><a href="#button"><i class="icon-chevron-right"></i> Button</a></li>
+                        <li><a href="#datepickerinput"><i class="icon-chevron-right"></i> DatepickerInput</a></li>
+                        <li><a href="#scrollspy"><i class="icon-chevron-right"></i> ScrollSpy</a></li>
+                    </ul>
+                </div>
+            
+                <div class="span9">
+                    
+                    <!-- Affix -->
+                    <section id="affix" class="spy">
+                        <div class="page-header">
+                            <h1>Affix</h1>
+                            <p>Add affix behavior to any element. Use offsets to define when to toggle the pinning of an element on and off.</p>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            The subnavigation on the left is a live demo of the <code>Affix</code> module.
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;div data-dojo-type=&quot;dobolo/Affix&quot; data-dojo-props=&quot;offsetTop: 100, offsetBottom: 100&quot;&gt;
+    ...
+&lt;/div&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var affix = new Affix({
+    offsetTop: 100,
+    offsetBottom: 100
+}, dom.byId('my-affix'));</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>offsetTop</td>
+                                    <td>number, function</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>offsetBottom</td>
+                                    <td>number, function</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <!-- Alert -->
+                    <section id="alert" class="spy">
+                        <div class="page-header">
+                            <h1>Alert</h1>
+                            <p><a href="http://twitter.github.com/bootstrap/components.html#alerts">Find the Bootstrap CSS reference for alerts</a> on the Bootstrap website. For the closing animation to work, please make sure to reference the Bootstrap <code>component-animations.less</code> stylesheet.</p>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            <div data-dojo-type="dobolo/Alert" class="alert fade in">
+    <button class="close">&times;</button>
+    <strong><i><b>Holy guacamole!</b></i></strong> Best check yo self, you're not looking too good.
+    
+    <script type="dojo/on" data-dojo-event="close" data-dojo-args="ev">
+        console.info('Alert about to be closed');
+    </script>
+    
+    <script type="dojo/on" data-dojo-event="closed" data-dojo-args="ev">
+        console.info('Alert is now closed');
+    </script>
+</div>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;div data-dojo-type=&quot;dobolo/Alert&quot; class=&quot;alert fade in&quot;&gt;
+    &lt;button class=&quot;close&quot;&gt;&amp;times;&lt;/button&gt;
+    &lt;strong&gt;&lt;i&gt;&lt;b&gt;Holy guacamole!&lt;/b&gt;&lt;/i&gt;&lt;/strong&gt; Best check yo self, you're not looking too good.
+    
+    &lt;script type=&quot;dojo/on&quot; data-dojo-event=&quot;close&quot; data-dojo-args=&quot;ev&quot;&gt;
+        console.info('Alert about to be closed');
+    &lt;/script&gt;
+    
+    &lt;script type=&quot;dojo/on&quot; data-dojo-event=&quot;closed&quot; data-dojo-args=&quot;ev&quot;&gt;
+        console.info('Alert is now closed');
+    &lt;/script&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var alert = new Alert({
+    'class': 'alert fade in',
+    content: &quot;&lt;strong&gt;&lt;i&gt;&lt;b&gt;Holy guacamole!&lt;/b&gt;&lt;/i&gt;&lt;/strong&gt; Best check yo self, you're not looking too good.&quot;,
+    closable: true
+}, 'my-alert');
+
+alert.startup();
+
+alert.on('close', function (ev) {
+    console.info('Alert about to be closed');
+});
+
+alert.on('closed', function (ev) {
+    console.info('Alert is now closed');
+});</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>content</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>closable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Methods</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Returns</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>close()</td>
+                                    <td>undefined</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Events</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>close</td>
+                                </tr>
+                                <tr>
+                                    <td>closed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <!-- Button -->
+                    <section id="button" class="spy">
+                        <div class="page-header">
+                            <h1>Button</h1>
+                            <p>Buttons have the same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html">dijit/form/Button</a> plus the properties and methods listed below. <a href="http://twitter.github.com/bootstrap/base-css.html#buttons">Find the Bootstrap CSS reference for buttons</a> on the Bootstrap website.</p>
+                        </div>
+                        
+                        <h2>Stateful Button</h2>
+                        
+                        <div class="bs-docs-example">
+                            <script>
+    var load = function (ev) {
+        var button = this;
+        button.loading();
+        setTimeout(function () { button.reset(); }, 2000);
+    }
+</script>
+
+<button class="btn btn-primary" data-dojo-type="dobolo/Button" data-dojo-props="onClick: load, loadingText: 'Loading...', resetText: 'Loaded'">Load</button>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;script&gt;
+    var load = function (ev) {
+        var button = this;
+        button.loading();
+        setTimeout(function () { button.reset(); }, 2000);
+    }
+&lt;/script&gt;
+
+&lt;button class=&quot;btn btn-primary&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;onClick: load, loadingText: 'Loading...', resetText: 'Loaded'&quot;&gt;Load&lt;/button&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var button = new Button({
+    type: 'submit',
+    'class': 'btn btn-primary',
+    label: 'Load',
+    loadingText: 'Loading...',
+    resetText: 'Loaded',
+    onClick: function (ev) {
+        this.loading();
+        setTimeout(lang.hitch(this, function () {
+            this.reset();
+        }), 2000);
+    }
+}, 'my-button');
+
+button.startup();</pre>
+                        
+                        <h2>Checkbox Button</h2>
+                        
+                        <div class="bs-docs-example">
+                            <div class="btn-group">
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Left</button>
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Middle</button>
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Right</button>
+</div>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'checkbox'&quot;&gt;Left&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'checkbox'&quot;&gt;Middle&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'checkbox'&quot;&gt;Right&lt;/button&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var makeButton = function (id, label) {
+    return new Button({
+        'class': 'btn',
+        label: label,
+        mode: 'checkbox'
+    }, id);
+}
+
+makeButton('l', 'Left').startup();
+makeButton('m', 'Middle').startup();
+makeButton('r', 'Right').startup();
+
+</pre>
+                        
+                        <h2>Radio Button</h2>
+                        
+                        <div class="bs-docs-example">
+                            <div class="btn-group">
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'my-group'">Left</button>
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'my-group'">Middle</button>
+    <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'my-group'">Right</button>
+</div>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;div class=&quot;btn-group&quot;&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'radio',group:'my-group'&quot;&gt;Left&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'radio',group:'my-group'&quot;&gt;Middle&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; data-dojo-type=&quot;dobolo/Button&quot; data-dojo-props=&quot;mode:'radio',group:'my-group'&quot;&gt;Right&lt;/button&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var makeButton = function (id, label) {
+    return new Button({
+        'class': 'btn',
+        label: label,
+        mode: 'radio',
+        group: 'my-group'
+    }, id);
+}
+
+makeButton('l', 'Left').startup();
+makeButton('m', 'Middle').startup();
+makeButton('r', 'Right').startup();
+
+</pre>
+                        
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>loadingText</td>
+                                    <td>string</td>
+                                    <td>Loading...</td>
+                                </tr>
+                                <tr>
+                                    <td>resetText</td>
+                                    <td>string</td>
+                                    <td>Loaded</td>
+                                </tr>
+                                <tr>
+                                    <td>mode</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>group</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Methods</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Returns</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>loading()</td>
+                                    <td>undefined</td>
+                                </tr>
+                                <tr>
+                                    <td>reset()</td>
+                                    <td>undefined</td>
+                                </tr>
+                                <tr>
+                                    <td>toggle()</td>
+                                    <td>undefined</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <!-- DatepickerInput -->
+                    <section id="datepickerinput" class="spy">
+                        <div class="page-header">
+                            <h1>DatepickerInput</h1>
+                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.less</code> and Bootstrap <code>dropdowns.less</code> stylesheets. The <code>locale</code> for the datepicker can be set in <code>dojoConfig</code>.
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            <input class="span4" type="text" data-dojo-type="dobolo/DatepickerInput" data-dojo-props="date: new Date(), format: 'full', weekStart: 0"/>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;input class=&quot;span4&quot; type=&quot;text&quot; data-dojo-type=&quot;dobolo/DatepickerInput&quot; data-dojo-props=&quot;date: new Date(), format: 'full', weekStart: 0&quot;/&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var dp = new DatepickerInput({
+    date: new Date(),
+    format: 'full',
+    'class': 'span4'
+}, 'my-datepicker-input');
+
+dp.on('show-calendar', function (ev) {
+    console.info('Calendar is now shown');
+});
+
+dp.on('hide-calendar', function (ev) {
+    console.info('Calendar is now hidden');
+});
+
+dp.watch('date', function (prop, oldVal, val) {
+    console.info('Date is now ' + val);
+});
+
+dp.startup();</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>Date</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>weekStart</td>
+                                    <td>number</td>
+                                    <td>0</td>
+                                    <td>0 for sunday, 1 for monday, 2 for tuesday etc</td>
+                                </tr>
+                                <tr>
+                                    <td>format</td>
+                                    <td>string</td>
+                                    <td>long</td>
+                                    <td>short, medium, long, full</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Events</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show-calendar</td>
+                                </tr>
+                                <tr>
+                                    <td>hide-calendar</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    
+                    
+                    <!-- ScrollSpy -->
+                    <section id="scrollspy" class="spy">
+                        <div class="page-header">
+                            <h1>ScrollSpy</h1>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            <p>This page with the subnavigation on the left is a live demo of the <code>ScrollSpy</code> module applied to <code>&lt;body&gt;</code> and below is an example of <code>ScrollSpy</code> applied to an element with <code>overflow: auto</code></p>
+                            <div id="my-navbar" class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li><a href="#aaa">aaa</a></li>
+            <li><a href="#bbb">bbb</a></li>
+            <li><a href="#ccc">ccc</a></li>
+        </ul>
+    </div>
+</div>
+
+<div data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '#my-navbar', offsetsSelector: '.spy-offset', offsetTop: 0, wait: 0" class="scroll-section">
+    <section id="aaa" class="spy-offset">
+        <h1>aaa</h1>
+    </section>
+
+    <section id="bbb" class="spy-offset">
+        <h1>bbb</h1>
+    </section>
+    
+    <section id="ccc" class="spy-offset">
+        <h1>ccc</h1>
+    </section>
+</div>
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        
+                        <pre class="prettyprint linenums">&lt;div id=&quot;my-navbar&quot; class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;ul class=&quot;nav&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#aaa&quot;&gt;aaa&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#bbb&quot;&gt;bbb&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#ccc&quot;&gt;ccc&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-dojo-type=&quot;dobolo/ScrollSpy&quot; data-dojo-props=&quot;targetSelector: '#my-navbar', offsetsSelector: '.spy-offset', offsetTop: 0, wait: 0&quot; class=&quot;scroll-section&quot;&gt;
+    &lt;section id=&quot;aaa&quot; class=&quot;spy-offset&quot;&gt;
+        &lt;h1&gt;aaa&lt;/h1&gt;
+    &lt;/section&gt;
+
+    &lt;section id=&quot;bbb&quot; class=&quot;spy-offset&quot;&gt;
+        &lt;h1&gt;bbb&lt;/h1&gt;
+    &lt;/section&gt;
+    
+    &lt;section id=&quot;ccc&quot; class=&quot;spy-offset&quot;&gt;
+        &lt;h1&gt;ccc&lt;/h1&gt;
+    &lt;/section&gt;
+&lt;/div&gt;</pre>
+                        
+                        <h3>Programmatic</h3>
+                        
+                        <pre class="prettyprint linenums">var scrollSpy = new ScrollSpy({
+    targetSelector: '#my-navbar',
+    offsetsSelector: 'section',
+    offsetTop: 0,
+    wait: 0
+}, query('.scroll-section')[0]);</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>targetSelector</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>offsetsSelector</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>offsetTop</td>
+                                    <td>number</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>wait</td>
+                                    <td>number</td>
+                                    <td>100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+    <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Big thanks go out to <a href="http://dojotoolkit.org">Dojo Toolkit</a>, <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> and <a href="http://dojobootstrap.com/">Dojo-Bootstrap</a></p>
+        <p>Dobolo is written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache license 2.0</a>.</p>
+        <p>This project is hosted on <a href="http://github.com/sirprize/dobolo">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dobolo-doc">dobolo-doc</a></p>
+        
+    </div>
+</footer>
+        
+    <script src="assets-201306100014/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201306100014/dojo/dojo.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/event.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/promise.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/browser.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/ajax.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/dom-common.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/dom-extra.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/widget-common.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/widget-extra.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/calendar.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/layer/misc.js"></script>
+    <script type="text/javascript" src="assets-201306100014/frontend/index.js"></script>
+
+        
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35397940-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "name": "other",
+    "description": "Copy-only things",
+    "version": "dev",
+    "dojoBuild": "package.js"
+}
