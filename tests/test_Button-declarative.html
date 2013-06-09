@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dobolo/Button (Declarative)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets/docs.css">
+        <link rel="stylesheet" href="assets/responsive.css">
+    </head>
+
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="index.html">Tests</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>dobolo/Button (Declarative)</h1>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div class="row">
+                <section>
+                    <div class="page-header">
+                        <h1>Stateful</h1>
+                    </div>
+                    
+                    <script>
+                        var load = function (ev) {
+                            var button = this;
+                            button.loading();
+                            setTimeout(function () {
+                                button.reset();
+                            }, 2000);
+                        }
+                    </script>
+                    
+                    <button id="my-loading-button" class="btn btn-primary" data-dojo-type="dobolo/Button" data-dojo-props="onClick: load, loadingText:'Loading...',resetTextasdf:'Loaded'">Load</button>
+                </section>
+                
+                <section>
+                    <div class="page-header">
+                        <h1>Checkbox</h1>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Left</button>
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Middle</button>
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Right</button>
+                    </div>
+                </section>
+                
+                <section>
+                    <div class="page-header">
+                        <h1>Radio</h1>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Left</button>
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Middle</button>
+                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Right</button>
+                    </div>
+                </section>
+                
+                <hr />
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="assets/config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        
+        <script>
+            require(["dojo/parser"]);
+        </script>
+    </body>
+</html>

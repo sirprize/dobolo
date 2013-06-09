@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dobolo/Button (Programmatic)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets/docs.css">
+        <link rel="stylesheet" href="assets/responsive.css">
+    </head>
+
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="index.html">Tests</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>dobolo/Button (Programmatic)</h1>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div class="row">
+                <section>
+                    <div class="page-header">
+                        <h1>Stateful</h1>
+                    </div>
+                    
+                    <button id="w1"></button>
+                </section>
+                
+                <section>
+                    <div class="page-header">
+                        <h1>Checkbox</h1>
+                    </div>
+                    <div class="btn-group">
+                        <button id="w3_1"></button>
+                        <button id="w3_2"></button>
+                        <button id="w3_3"></button>
+                    </div>
+                </section>
+                
+                <section>
+                    <div class="page-header">
+                        <h1>Radio</h1>
+                    </div>
+                    <div class="btn-group">
+                        <button id="w4_1"></button>
+                        <button id="w4_2"></button>
+                        <button id="w4_3"></button>
+                    </div>
+                </section>
+                
+                <hr />
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="assets/config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        
+        <script>
+            require([
+                "dobolo/Button",
+                "dojo/on"
+            ], function (
+                Button,
+                on
+            ) {
+                // stateful
+                var w1 = new Button({
+                    'class': 'btn btn-primary',
+                    label: 'Load',
+                    loadingText: 'Loading...',
+                    resetText: 'Loaded'
+                }, 'w1');
+
+                w1.startup();
+                
+                w1.on('click', function (ev) {
+                    w1.loading();
+                    setTimeout(function () {
+                        w1.reset();
+                    }, 2000);
+                });
+                
+                // checkbox
+                var w3_1 = new Button({
+                    'class': 'btn',
+                    label: 'Left',
+                    mode: 'checkbox'
+                }, 'w3_1');
+
+                w3_1.startup();
+                
+                var w3_2 = new Button({
+                    'class': 'btn',
+                    label: 'Middle',
+                    mode: 'checkbox'
+                }, 'w3_2');
+
+                w3_2.startup();
+                
+                var w3_3 = new Button({
+                    'class': 'btn',
+                    label: 'Right',
+                    mode: 'checkbox'
+                }, 'w3_3');
+
+                w3_3.startup();
+                
+                // radio
+                var w4_1 = new Button({
+                    'class': 'btn',
+                    label: 'Left',
+                    mode: 'radio',
+                    group: 'xxx'
+                }, 'w4_1');
+
+                w4_1.startup();
+                
+                var w4_2 = new Button({
+                    'class': 'btn',
+                    label: 'Middle',
+                    mode: 'radio',
+                    group: 'xxx'
+                }, 'w4_2');
+
+                w4_2.startup();
+                
+                var w4_3 = new Button({
+                    'class': 'btn',
+                    label: 'Right',
+                    mode: 'radio',
+                    group: 'xxx'
+                }, 'w4_3');
+
+                w4_3.startup();
+            });
+        </script>
+    </body>
+</html>

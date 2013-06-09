@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dobolo/ScrollSpy (Declarative)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets/docs.css">
+        <link rel="stylesheet" href="assets/responsive.css">
+        
+        <style>
+            .scroll-section {
+                height: 200px;
+                overflow: auto;
+                position: relative;
+            }
+            
+            .scroll-section section {
+                margin: 0;
+                padding: 0;
+                height: 50em;
+            }
+            
+            .scroll-section section h1 {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="index.html">Tests</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>dobolo/ScrollSpy (Declarative)</h1>
+            </div>
+        </header>
+        
+        <div class="container">
+            <section>
+                <!-- navigation -->
+                <div id="my-navbar" class="navbar">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li><a href="#aaa">aaa</a></li>
+                            <li><a href="#bbb">bbb</a></li><!--
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">more <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#one">one</a></li>
+                                    <li><a href="#two">two</a></li>
+                                    <li><a href="#three">three</a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- scrollable area -->
+                <div data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '#my-navbar', offsetsSelector: 'section', offsetTop: 0, wait: 0" class="scroll-section">
+                    <section id="aaa">
+                        <h1>aaa</h1>
+                    </section>
+
+                    <section id="bbb">
+                        <h1>bbb</h1>
+                    </section>
+                    <!--
+                    <section id="one">
+                        <h1>one</h1>
+                    </section>
+
+                    <section id="two">
+                        <h1>two</h1>
+                    </section>
+
+                    <section id="three">
+                        <h1>three</h1>
+                    </section>
+                    -->
+                </div>
+            </section>
+        </div>
+        
+        <script type="text/javascript" src="assets/config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        
+        <script>
+            require(["dojo/parser"]);
+        </script>
+    </body>
+</html>

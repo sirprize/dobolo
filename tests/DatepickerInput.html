@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dobolo/DatepickerInput tests</title>
+        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="../assets/calendar.css">
+        <script type="text/javascript" src="assets/config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dobolo/DatepickerInput</h1>
+            
+            <input type="text" value="2020-12-03" id="dec1" data-dojo-type="dobolo/DatepickerInput" data-dojo-props="displayFormat: 'full'"/>
+            
+            <script>
+                require([
+                    "doh",
+                    "mijit/registry",
+                    "dobolo/DatepickerInput",
+                    "dojo/_base/lang",
+                    "dojo/_base/window",
+                    "dojo/on",
+                    "dojo/parser",
+                    "dojo/date/locale",
+                    "dojo/dom-construct",
+                    "dojo/dom-attr",
+                    "dojo/ready"
+                ], function (
+                    doh,
+                    registry,
+                    DatepickerInput,
+                    lang,
+                    baseWin,
+                    on,
+                    parser,
+                    locale,
+                    domConstruct,
+                    domAttr,
+                    ready
+                ) {
+                    parser.parse();
+                    
+                    ready(function () {
+                        doh.register("declarative usage", [
+                            {
+                                name: "should have initial state",
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1');
+                                    doh.is('Thursday, December 3, 2020', dec1.get('displayValue'), 'value is Thursday, December 3, 2020');
+                                    doh.is(2020, dec1.get('value').getFullYear(), 'year is 2020');
+                                    doh.is(11, dec1.get('value').getMonth(), 'month is 11 (december)');
+                                    doh.is(3, dec1.get('value').getDate(), 'day is 3');
+                                }
+                            },
+                            {
+                                name: "should have state after set(value)",
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1');
+                                    dec1.set('value', '2015-03-07');
+                                    doh.is('Saturday, March 7, 2015', dec1.get('displayValue'), 'value is Saturday, March 7, 2015');
+                                    doh.is(2015, dec1.get('value').getFullYear(), 'year is 2015');
+                                    doh.is(2, dec1.get('value').getMonth(), 'month is 2 (march)');
+                                    doh.is(7, dec1.get('value').getDate(), 'day is 7');
+                                }
+                            },
+                            {
+                                name: "setting the value should be watchable",
+                                valHandle: null,
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1'), newVal = false;
+                                    
+                                    this.valHandle = dec1.watch('value', function (prop, old, val) {
+                                        newVal = true;
+                                    });
+                                    
+                                    dec1.set('value', '2015-03-09');
+                                    doh.t(newVal, 'set(value) has triggered watch(value)');
+                                },
+                                tearDown: function () {
+                                    this.valHandle.remove();
+                                }
+                            },
+                            {
+                                name: "value should output in those formats",
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1'),
+                                        d = new Date(2022,7,17,0,0,0);
+                                    
+                                    dec1.set('displayFormat', 'short');
+                                    dec1.set('value', d);
+                                    doh.is('8/17/22', dec1.get('displayValue'), 'short is 8/17/22');
+                                    
+                                    dec1.set('displayFormat', 'medium');
+                                    dec1.set('value', d);
+                                    doh.is('Aug 17, 2022', dec1.get('displayValue'), 'medium is Aug 17, 2022');
+                                    
+                                    dec1.set('displayFormat', 'long');
+                                    dec1.set('value', d);
+                                    doh.is('August 17, 2022', dec1.get('displayValue'), 'long is August 17, 2022');
+                                    
+                                    dec1.set('displayFormat', 'full');
+                                    dec1.set('value', d);
+                                    doh.is('Wednesday, August 17, 2022', dec1.get('displayValue'), 'full is Wednesday, August 17, 2022');
+                                }
+                            },
+                            {
+                                name: "showing and hiding the calendar should trigger events",
+                                showHandle: null,
+                                hideHandle: null,
+                                setUp: function () {
+                                    
+                                },
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1'), shown = false, hidden = false;
+                                    
+                                    this.showHandle = on(dec1, 'show-calendar', function (ev) {
+                                        shown = true;
+                                    });
+                                    
+                                    this.hideHandle = on(dec1, 'hide-calendar', function (ev) {
+                                        hidden = true;
+                                    });
+                                    
+                                    dec1.showCalendar();
+                                    dec1.hideCalendar();
+                                    doh.t(shown && hidden, 'show-calendar and hide-calendar events have fired');
+                                },
+                                tearDown: function () {
+                                    this.showHandle.remove();
+                                    this.hideHandle.remove();
+                                }
+                            }
+                        ]);
+                        
+                        doh.register("programmatic usage", [
+                            {
+                                name: "should have initial state",
+                                setUp: function () {
+                                    this.pro1 = new DatepickerInput({
+                                        displayFormat: 'full',
+                                        value: '2020-12-03'
+                                    });
+                                    
+                                    this.pro1.placeAt(baseWin.body(), 'first');
+                                    this.pro1.startup();
+                                },
+                                runTest: function () {
+                                    doh.is('Thursday, December 3, 2020', this.pro1.get('displayValue'), 'value is Thursday, December 3, 2020');
+                                    doh.is(2020, this.pro1.get('value').getFullYear(), 'year is 2020');
+                                    doh.is(11, this.pro1.get('value').getMonth(), 'month is 11 (december)');
+                                    doh.is(3, this.pro1.get('value').getDate(), 'day is 3');
+                                },
+                                tearDown: function () {
+                                    this.pro1.destroyRecursive();
+                                }
+                            }
+                        ]);
+                        doh.run();
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
