@@ -4,12 +4,12 @@
 [submodule "vendor/dojo/util"]
 	path = vendor/dojo/util
 	url = git://github.com/dojo/util.git
-[submodule "vendor/twitter/bootstrap"]
-	path = vendor/twitter/bootstrap
-	url = git://github.com/twitter/bootstrap.git
 [submodule "vendor/sirprize/dojo-form-controls"]
 	path = vendor/sirprize/dojo-form-controls
 	url = git://github.com/sirprize/dojo-form-controls.git
 [submodule "vendor/sirprize/mijit"]
 	path = vendor/sirprize/mijit
 	url = git://github.com/sirprize/mijit.git
+[submodule "vendor/twbs/bootstrap"]
+	path = vendor/twbs/bootstrap
+	url = https://github.com/twbs/bootstrap.git

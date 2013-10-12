@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dobolo/DatepickerInput (Programmatic)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/tests.css" rel="stylesheet">
+        <link href="../assets/calendar.css" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/html5shiv.js"></script>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">Dobolo Tests</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>dobolo/DatepickerInput (Programmatic)</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" role="main">
+                    <div class="dobolo-content-section">
+                        <input id="my-datepicker">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="assets/config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        
+        <script>
+            require([
+                "dobolo/DatepickerInput",
+                "dojo/on",
+                "dojo/domReady!"
+            ], function (
+                DatepickerInput,
+                on
+            ) {
+                var datepicker = new DatepickerInput({
+                    value: new Date(),
+                    displayFormat: 'full',
+                    'class': 'form-control'
+                }, 'my-datepicker');
+                
+                datepicker.on('show-calendar', function (ev) {
+                    console.info('Calendar is now shown');
+                });
+                
+                datepicker.on('hide-calendar', function (ev) {
+                    console.info('Calendar is now hidden');
+                });
+                
+                datepicker.watch('value', function (prop, old, val) {
+                    console.info('Date is now ' + val);
+                });
+                
+                datepicker.startup();
+            });
+        </script>
+    </body>
+</html>

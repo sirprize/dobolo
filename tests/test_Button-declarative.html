@@ -4,73 +4,73 @@
         <meta charset="utf-8">
         <title>dobolo/Button (Declarative)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/styles.css">
-        <link rel="stylesheet" href="assets/docs.css">
-        <link rel="stylesheet" href="assets/responsive.css">
+        <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/tests.css" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/html5shiv.js"></script>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/respond.min.js"></script>
+        <![endif]-->
     </head>
 
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><a href="index.html">Tests</a></li>
-                        </ul>
-                    </div>
+    <body>
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">Dobolo Tests</a>
                 </div>
             </div>
-        </div>
-            
-        <header class="jumbotron subhead" id="overview">
+        </header>
+
+        <div class="jumbotron">
             <div class="container">
                 <h1>dobolo/Button (Declarative)</h1>
             </div>
-        </header>
-        
+        </div>
+
         <div class="container">
             <div class="row">
-                <section>
-                    <div class="page-header">
-                        <h1>Stateful</h1>
+                <div class="col-md-12" role="main">
+                    <div class="dobolo-content-section">
+                        <div class="page-header">
+                            <h1>Stateful</h1>
+                        </div>
+                        
+                        <script>
+                            var load = function (ev) {
+                                var button = this;
+                                button.loading();
+                                setTimeout(function () {
+                                    button.reset();
+                                }, 2000);
+                            }
+                        </script>
+                        
+                        <button id="my-loading-button" class="btn btn-primary" data-dojo-type="dobolo/Button" data-dojo-props="onClick: load, loadingText:'Loading...',resetText:'Loaded'">Load</button>
                     </div>
-                    
-                    <script>
-                        var load = function (ev) {
-                            var button = this;
-                            button.loading();
-                            setTimeout(function () {
-                                button.reset();
-                            }, 2000);
-                        }
-                    </script>
-                    
-                    <button id="my-loading-button" class="btn btn-primary" data-dojo-type="dobolo/Button" data-dojo-props="onClick: load, loadingText:'Loading...',resetTextasdf:'Loaded'">Load</button>
-                </section>
-                
-                <section>
-                    <div class="page-header">
-                        <h1>Checkbox</h1>
+
+                    <div class="dobolo-content-section">
+                        <div class="page-header">
+                            <h1>Checkbox</h1>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Left</button>
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Middle</button>
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Right</button>
+                        </div>
                     </div>
-                    <div class="btn-group">
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Left</button>
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Middle</button>
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'checkbox'">Right</button>
+
+                    <div class="dobolo-content-section">
+                        <div class="page-header">
+                            <h1>Radio</h1>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Left</button>
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Middle</button>
+                            <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Right</button>
+                        </div>
                     </div>
-                </section>
-                
-                <section>
-                    <div class="page-header">
-                        <h1>Radio</h1>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Left</button>
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Middle</button>
-                        <button class="btn" data-dojo-type="dobolo/Button" data-dojo-props="mode:'radio',group:'xxx'">Right</button>
-                    </div>
-                </section>
-                
-                <hr />
+                </div>
             </div>
         </div>
         

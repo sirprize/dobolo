@@ -1,0 +1,25 @@
+/*
+ * Scaffolding
+ *
+ * Update the basics of our documents to prep for docs content.
+ */
+
+body {
+  position: relative; /* For scrollyspy */
+  padding-top: 50px; /* Account for fixed navbar */
+}
+
+/*
+ * Docs sections
+ *
+ * Content blocks for each component or feature.
+ */
+
+/* Space things out */
+.dobolo-content-section + .dobolo-content-section {
+  padding-top: 40px;
+}
+
+.dobolo-content-section {
+  padding-top: 40px;
+}

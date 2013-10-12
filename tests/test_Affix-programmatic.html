@@ -4,69 +4,71 @@
         <meta charset="utf-8">
         <title>dobolo/Affix (Programmatic)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/styles.css">
-        <link rel="stylesheet" href="assets/docs.css">
-        <link rel="stylesheet" href="assets/responsive.css">
-        
-        <style>
-            section {
-                height: 100em;
-            }
-        </style>
+        <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/tests.css" rel="stylesheet">
+        <link href="assets/affix.css" rel="stylesheet">
+
+        <!--[if lt IE 9]>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/html5shiv.js"></script>
+            <script src="../vendor/twbs/bootstrap/docs-assets/js/respond.min.js"></script>
+        <![endif]-->
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li><a href="index.html">Tests</a></li>
-                        </ul>
-                    </div>
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand">Dobolo Tests</a>
                 </div>
             </div>
-        </div>
-            
-        <header class="jumbotron subhead" id="overview">
+        </header>
+
+        <div class="jumbotron">
             <div class="container">
                 <h1>dobolo/Affix (Programmatic)</h1>
             </div>
-        </header>
-        
+        </div>
+
         <div class="container">
             <div class="row">
-                <section>
-                    <!-- navigation -->
-                    <div class="span3 bs-docs-sidebar">
-                        <ul id="my-affix" class="nav nav-list bs-docs-sidenav">
-                            <li><a href="#a"><i class="icon-chevron-right"></i> A</a></li>
-                            <li><a href="#b"><i class="icon-chevron-right"></i> B</a></li>
-                            <li><a href="#c"><i class="icon-chevron-right"></i> C</a></li>
+                <div class="col-md-3">
+                    <div class="dobolo-sidebar hidden-print">
+                        <ul class="nav dobolo-sidenav">
+                            <li>
+                                <a href="#a">A</a>
+                            </li>
+                            <li>
+                                <a href="#b">B</a>
+                            </li>
+                            <li>
+                                <a href="#c">C</a>
+                            </li>
                         </ul>
                     </div>
-                    
-                    <!-- content -->
-                    <div class="span9">
-                        <section id="a">
-                            <div class="page-header">
-                                <h1>A</h1>
-                            </div>
-                        </section>
-                            
-                        <section id="b">
-                            <div class="page-header">
-                                <h1>B</h1>
-                            </div>
-                        </section>
-                        
-                        <section id="c">
-                            <div class="page-header">
-                                <h1>C</h1>
-                            </div>
-                        </section>
+                </div>
+
+                <div class="col-md-9" role="main">
+                    <div class="dobolo-content-section" id="a">
+                        <div class="page-header">
+                            <h1>A</h1>
+                        </div>
+                        <p>&nbsp;</p>
                     </div>
-                </section>
+
+                    <div class="dobolo-content-section" id="b">
+                        <div class="page-header">
+                            <h1>B</h1>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+
+                    <div class="dobolo-content-section" id="c">
+                        <div class="page-header">
+                            <h1>C</h1>
+                        </div>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -77,29 +79,23 @@
             require([
                 "dobolo/Affix",
                 "dobolo/ScrollSpy",
-                "dojo/_base/window",
-                "dojo/dom",
-                "dojo/ready",
+                "dojo/query",
                 "dojo/domReady!"
             ], function (
                 Affix,
                 ScrollSpy,
-                baseWin,
-                dom,
-                ready
+                query
             ) {
                 var affix = new Affix({
-                    offsetTop: function () {
-                        return document.width <= 980 ? 245 : 195;
-                    }
-                }, dom.byId('my-affix'));
+                    offsetTop: 200
+                }, query('.dobolo-sidebar')[0]);
                 
                 var scrollSpy = new ScrollSpy({
-                    targetSelector: '.bs-docs-sidenav',
-                    offsetsSelector: 'section',
+                    targetSelector: '.dobolo-sidenav',
+                    offsetsSelector: '.dobolo-content-section',
                     offsetTop: 70,
                     wait: 100
-                }, baseWin.body());
+                }, document);
             });
         </script>
     </body>
