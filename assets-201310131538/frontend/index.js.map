@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"index.js",
+"lineCount":1,
+"mappings":"A,SAAAA,OAAA,+CAIG,QAAA,CACCC,CADD,CAECC,CAFD,EAMCD,CAAAE,MAAA,CAAaD,CAAA,QAAA,GAAb,CAEAE,OAAAC,YARD,EAQuBA,WAAA,EARvB,CAJH;",
+"sources":["index.js.uncompressed.js"],
+"names":["require","parser","query","parse","window","prettyPrint"]
+}

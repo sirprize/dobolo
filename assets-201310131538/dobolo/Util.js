@@ -1,0 +1,3 @@
+//>>built
+define("dobolo/Util",[],function(){return{transition:function(){var b=document.createElement("bootstrap"),c={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd",transition:"transitionend"},a;for(a in c)if(void 0!==b.style[a])return{end:c[a]}}(),throttle:function(b,c,a){var d=!0;return function(){d&&(d=!1,b.apply(a||b,arguments),setTimeout(function(){d=!0},c))}}}});
+//@ sourceMappingURL=Util.js.map
