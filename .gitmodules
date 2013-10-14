@@ -13,3 +13,9 @@
 [submodule "vendor/twbs/bootstrap"]
 	path = vendor/twbs/bootstrap
 	url = https://github.com/twbs/bootstrap.git
+[submodule "vendor/scottjehl/Respond"]
+	path = vendor/scottjehl/Respond
+	url = https://github.com/scottjehl/Respond.git
+[submodule "vendor/aFarkas/html5shiv"]
+	path = vendor/aFarkas/html5shiv
+	url = https://github.com/aFarkas/html5shiv.git
